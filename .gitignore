@@ -1,0 +1,16 @@
+.idea/
+.vscode/
+.pid/
+venv/
+.DS_Store
+*.pyc
+*.yaml
+*.yml
+*.rdb
+*.out
+*.pkl
+*.log*
+config/sys_config.py
+config/db_config.py
+config/celery_config.py
+config/docker_config.py

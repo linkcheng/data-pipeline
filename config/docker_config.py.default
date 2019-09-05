@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+# 远端 docker daemon 地址
+BASE_URL = 'tcp://127.0.0.1:2375'
+# 版本号
+VERSION = '1.35'
+
+# 基础镜像仓库名称
+BASE_IMAGE_REPOSITORY = 'python_base_images/python_base'
+# 基础镜像 tag
+BASE_IMAGE_TAG = 'v1'
+
+# 工作目录
+WORK_PATH = '/data/code/data-pipeline'
+# 日志目录
+LOG_PATH = '/data/logs/data-pipeline'
+
+# dockerfile 模板
+DOCKERFILE_TEMPLATE = f"""\
+FROM {BASE_IMAGE_REPOSITORY}:{BASE_IMAGE_TAG}
+
+MAINTAINER zhenglong <zhenglong1992@126.com>
+
+ARG BASE_PATH="{WORK_PATH}"
+
+COPY . ${{BASE_PATH}}
+
+WORKDIR ${{BASE_PATH}}
+
+ENV PYTHONPATH=${{BASE_PATH}}
+
+RUN yum -y install snappy-devel \\
+    && yum -y install librdkafka-devel \\
+    && /opt/website/python3.6/bin/pip3 install \\
+        -r requirements.txt \\
+        -i https://mirrors.aliyun.com/pypi/simple/
+
+ENV RDKAFKA_INSTALL=system
+
+ENTRYPOINT ["/opt/website/python3.6/bin/python3.6", "bin/cli.py"]
+
+CMD [ "--help" ]
+"""

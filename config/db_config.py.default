@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+
+# MySQL 配置
+MYSQL_R_CONFIG = {
+    'host': '127.0.0.1',
+    'port': 3306,
+    'user': 'admin',
+    'password': 'admin123',
+    'db': 'statistics',
+    'charset': 'utf8',
+}
+# 需要跟踪的数据表
+MYSQL_R_STATISTICS_TABLES = [
+    'statistics.StarUser1',
+    'statistics.StarUser2',
+]
+
+# MongoDB 配置
+MONGO_R_CONFIG = {
+    'host': '127.0.0.1',
+    'port': 27017,
+    'user': 'reporter',
+    'password': '12345678',
+    'database': 'rcs_gateway'
+}
+
+# 需要跟踪的数据表
+MONGO_R_REPORTING_TABLES = [
+    'reporting.hangjuLog',
+]

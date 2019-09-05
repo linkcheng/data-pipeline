@@ -1,0 +1,80 @@
+# -*- coding: utf-8 -*-
+
+SENTRY_DSN = ''
+
+# ######################### log 配置 #########################
+
+LOG_PATH = './logs'
+
+LOG_BACKUP_COUNT = 45
+
+LOG_ROTATING_FILE_MODE = 'time'
+
+
+# ######################### Redis 配置 #########################
+
+REDIS_CONFIG = {
+    'host': '127.0.0.1',
+    'port': 6379,
+}
+
+
+# ######################### 客户端配置 #########################
+
+# 系统支持的读取端数据存储的系统类型
+SOURCES = ['MySQL', 'MongoDB', 'Kafka']
+
+# 系统支持的写入端数据存储的系统类型
+SINKS = ['MySQL', 'MongoDB', 'Kafka']
+
+# 系统支持的消息队列类型
+MQS = ['Kafka']
+
+# 系统支持的启动方式
+EXECUTORS = ['local', 'celery']
+
+
+# ######################### celery 配置 #########################
+
+# celery 名称
+CELERY_NAME = 'data-pipeline'
+
+# celery 配置文件
+CELERY_CONFIG = 'config.celery_config'
+
+
+# ######################### 基础配置 #########################
+
+# 写数据库事务一次允许的最大行数，超过就会被打断事务
+MAX_LEN = 50_000
+
+# operators 最大缓存队列
+MAX_BUF_SIZE = 20_000
+
+
+# ######################### pykafka 配置 #########################
+
+# pykafka 匹配
+# 是否使用 librdkafka producer
+USE_RDKAFKA_P = False
+
+# 是否使用 librdkafka consumer
+USE_RDKAFKA_C = False
+
+
+# ######################### kafka 配置 #########################
+
+# kafka host 配置
+BOOTSTRAP_SERVERS = 'hh001:9092,hh002:9092,hh003:9092'
+
+# kafka broker 版本
+BROKER_VERSION = '1.0.0'
+
+# how many brokers in  ISRs commit， -1 = all
+REQUEST_REQUIRED_ACKS = -1
+
+# 压缩算法
+COMPRESSION_TYPE = 'snappy'
+
+# Maximum request message size
+MESSAGE_MAX_BYTES = 10 * 1024 * 1024
