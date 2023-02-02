@@ -3,7 +3,7 @@ click==7.0
 python_dateutil==2.8.0
 pytz==2019.1
 munch==2.3.2
-werkzeug==0.15.4
+werkzeug==0.15.5
 python-snappy==0.5.4
 confluent-kafka==1.0.1
 PyMySQL==0.9.3
